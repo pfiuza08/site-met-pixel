@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Olá! — Site de Teste com Pixel da Meta</title>
+    <meta name="description" content="Exemplo mínimo de site estático pronto para Vercel com Pixel da Meta (Facebook) e eventos comuns." />
+    <meta name="author" content="Você :)" />
+    <meta name="robots" content="index,follow" />
+
+    <!-- Open Graph (útil para compartilhamento) -->
+    <meta property="og:title" content="Olá! — Site de Teste com Pixel da Meta" />
+    <meta property="og:description" content="Site simples para testar publicação na Vercel e instrumentação com o Pixel da Meta." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://seu-dominio.com/" />
+    <meta property="og:image" content="https://seu-dominio.com/og-image.png" />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <!-- Pixel da Meta (Facebook) -->
+    <!-- SUBSTITUA 'PIXEL_ID_AQUI' PELO SEU ID REAL (ex.: 1775066926453461) -->
+    <script>
+      !(function(f,b,e,v,n,t,s){
+        if(f.fbq) return; n=f.fbq=function(){ n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments) };
+        if(!f._fbq) f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0';
+        n.queue=[]; t=b.createElement(e); t.async=!0; t.src=v;
+        s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
+      })(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'PIXEL_ID_AQUI'); // <= troque aqui
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none" 
+           src="https://www.facebook.com/tr?id=1775066926453461&ev=PageView&noscript=1" />
+    </noscript>
+
+    <header class="container">
+      <nav class="nav">
+        <span class="brand">Meu Site Teste</span>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#acoes">Ações</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="inicio" class="container">
+      <section class="hero">
+        <h1>Olá! 👋</h1>
+        <p>Este é um site estático <strong>mínimo</strong> pronto para publicar na Vercel, com o Pixel da Meta instalado e alguns eventos úteis para testes.</p>
+        <div class="buttons">
+          <button id="btnViewContent">Ver Conteúdo</button>
+          <button id="btnLead">Quero o e-book (Lead)</button>
+          <button id="btnAddToCart">Adicionar ao carrinho</button>
+          <button id="btnInitiateCheckout">Iniciar checkout</button>
+          <button id="btnCompleteRegistration">Concluir registro</button>
+          <button id="btnPurchase">Comprar agora</button>
+        </div>
+      </section>
+
+      <section id="acoes" class="cards">
+        <article class="card">
+          <h2>UTM tracking</h2>
+          <p>UTMs da URL são salvas em <code>sessionStorage</code> e enviadas como parâmetros nos eventos.</p>
+        </article>
+        <article class="card">
+          <h2>Scroll & tempo</h2>
+          <p>Dispara <code>trackCustom("Scroll50")</code> ao atingir 50% da página e <code>trackCustom("TimeOnPage10s")</code> após 10s.</p>
+        </article>
+        <article class="card">
+          <h2>Outbound</h2>
+          <p>Cliques em links externos disparam <code>trackCustom("OutboundClick")</code>.</p>
+        </article>
+      </section>
+
+      <section id="contato" class="container contact">
+        <h2>Contato</h2>
+        <p>
+          <a class="whatsapp" href="https://wa.me/5521995558808" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </p>
+        <p class="muted">Dica: personalize o número e o texto do WhatsApp.</p>
+      </section>
+    </main>
+
+    <footer class="container footer">
+      <small>© <span id="year"></span> Seu Nome. Publicado na Vercel.</small>
+    </footer>
+
+    <div id="consent" class="consent hidden">
+      <p>Usamos cookies/tecnologias semelhantes para medir desempenho (Pixel da Meta). <a href="#" id="consentAccept">Aceitar</a> • <a href="#" id="consentReject">Rejeitar</a></p>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
